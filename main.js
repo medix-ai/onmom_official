@@ -66,7 +66,10 @@
     }
   });
 
-  /* ---- 4. 사전신청 폼 (정적 사이트용 — 추후 백엔드 연결) ---- */
+  /* ---- 4. 사전신청 폼 → 구글 시트 수집 ---- */
+  // 구글 Apps Script 웹앱 URL. (아래 값을 배포한 웹앱 주소로 교체)
+  var LAUNCH_ENDPOINT = "https://script.google.com/macros/s/AKfycbz8YCy3-9GvN7q-ADBIrx-XMaWqWRJa9QZ5vxbHvpNburgi_hsRJB0cFmcFtVbF8p6U/exec";
+
   var form = document.getElementById("applyForm");
   var msg = document.getElementById("formMsg");
   if (form) {
@@ -86,11 +89,24 @@
         return;
       }
 
-      // TODO: 실제 수집 엔드포인트(구글 시트/폼/이메일) 연결
-      // 현재는 프론트 확인만.
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; }
       try { localStorage.setItem("onmom_launch_alert", email); } catch (_) {}
+
+      // 구글 시트로 전송 (no-cors: 응답은 못 읽지만 기록은 됨)
+      if (LAUNCH_ENDPOINT) {
+        var body = new URLSearchParams({
+          email: email,
+          ua: navigator.userAgent,
+          ref: location.href
+        });
+        fetch(LAUNCH_ENDPOINT, { method: "POST", mode: "no-cors", body: body })
+          .catch(function () {});
+      }
+
       setMsg("출시 알림 신청이 완료되었어요. 앱이 나오면 가장 먼저 알려드릴게요.", "ok");
       form.reset();
+      if (btn) { setTimeout(function () { btn.disabled = false; }, 1500); }
     });
   }
   function setMsg(text, kind) {

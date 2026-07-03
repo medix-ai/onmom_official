@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# 대용량 원본 영상 (웹 배포에는 screens/demo.mp4 압축본을 사용)
+*.mov

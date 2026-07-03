@@ -192,9 +192,12 @@ b { font-weight: 700; color: var(--text-strong); }
   width: 240px;
   height: 500px;
   background: #fff;
-  border-radius: 40px;
-  padding: 12px;
-  box-shadow: var(--shadow-md), 0 0 0 10px #fff, 0 0 0 12px var(--line);
+  border-radius: 44px;
+  padding: 5px;
+  box-shadow:
+    0 0 0 1px rgba(17, 24, 39, 0.05),
+    0 20px 44px rgba(17, 24, 39, 0.14),
+    0 4px 12px rgba(17, 24, 39, 0.06);
 }
 .phone::before { /* 노치 */
   content: "";
@@ -223,6 +226,88 @@ b { font-weight: 700; color: var(--text-strong); }
   justify-content: center;
   text-align: center;
   padding: 0 24px;
+  line-height: 1.5;
+}
+
+/* 실제 스크린샷이 들어간 폰 (스크린샷 자체에 상태바·노치 포함) */
+.phone.has-shot { background: #fff; }
+.phone.has-shot::before,
+.phone.has-shot::after { display: none; }
+.phone-shot {
+  position: absolute;
+  inset: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 40px;
+  z-index: 1;
+  display: block;
+}
+
+/* ---------------- 실제 화면 갤러리 (가로 스크롤) ---------------- */
+.showcase { overflow: hidden; }
+.showcase-scroll {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 28px calc(var(--pad) * -1) 0;
+  padding: 6px var(--pad) 18px;
+  scrollbar-width: none;
+}
+.showcase-scroll::-webkit-scrollbar { display: none; }
+.shot-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.shot-item .phone {
+  width: 200px;
+  height: 417px;      /* 240:500 비율 유지 */
+  border-radius: 38px;
+  padding: 5px;
+}
+.shot-item .phone-shot {
+  inset: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  border-radius: 34px;
+}
+.shot-cap {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-sub);
+  text-align: center;
+  line-height: 1.45;
+}
+.shot-cap b {
+  display: block;
+  font-size: 15.5px;
+  color: var(--text-strong);
+  margin-bottom: 2px;
+}
+.showcase-hint {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-top: 4px;
+}
+.showcase-hint::before { content: "← "; }
+.showcase-hint::after { content: " →"; }
+
+/* ---------------- 실제 작동 영상 ---------------- */
+.phone-video .phone-shot { background: #000; cursor: pointer; }
+.demo-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-top: 16px;
   line-height: 1.5;
 }
 

@@ -136,14 +136,93 @@
         </div>
 
         <div class="reveal phone-wrap">
-          <!-- 앱 스크린샷 자리 (추후 교체) -->
-          <div class="phone" data-screen="홈 · 산후 회복 대시보드"></div>
+          <div class="phone has-shot">
+            <img class="phone-shot" src="screens/home.png"
+              alt="온맘 홈 화면 · 산후 14일차 회복 대시보드" loading="eager" />
+          </div>
         </div>
 
         <p class="trust-line reveal">
           근거 · 임산부수첩 2023 · ACOG 736 · EPDS · NICE NG194
           <span class="dot">·</span> <b>AI는 진단하지 않습니다</b>
         </p>
+      </div>
+    </section>
+
+    <!-- ================= S1.5 · 실제 화면 미리보기 ================= -->
+    <section class="section alt showcase" id="screens" aria-labelledby="screens-title">
+      <div class="shell">
+        <span class="section-tag">실제 화면</span>
+        <h2 id="screens-title" class="section-title reveal">
+          손 안의 산후 회복 코치.
+        </h2>
+
+        <div class="showcase-scroll reveal">
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/analysis.png"
+                alt="회복 분석 결과 · 가능/주의/금지 운동과 근거 칩" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>회복 분석</b>가능·주의·금지를<br />근거 칩과 함께</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/exercise.png"
+                alt="오늘의 운동 · 산후 주차별 운동 게이팅" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>오늘의 운동</b>지금 가능 / N주에 열림<br />주차별 게이팅</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/symptom.png"
+                alt="이상 증상 빠른 기록 · 오로·발열·통증·위험 증상" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>이상 증상 기록</b>오로·발열·통증·<br />위험 신호 체크</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/redflag.png"
+                alt="회복 가이드 · 즉시 병원에 가야 할 신호" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>안전 가이드</b>즉시 병원에 가야 할<br />레드 플래그</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/map.png"
+                alt="지역 연계 · 가까운 산부인과 지도와 거리" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>지역 연계</b>가까운 산부인과<br />거리·소요시간</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/lifestyle.png"
+                alt="생활 권고 · 정신건강·수면·영양 근거 기반 안내" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>생활 권고</b>정신건강·수면·영양<br />근거 기반</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/community.png"
+                alt="맘 커뮤니티 · 회복 경험 공유" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>맘 커뮤니티</b>회복 경험을<br />함께 나눠요</p>
+          </div>
+
+          <div class="shot-item">
+            <div class="phone has-shot">
+              <img class="phone-shot" src="screens/chat.png"
+                alt="AI 상담 · 진단·처방이 아닌 정보 안내" loading="lazy" />
+            </div>
+            <p class="shot-cap"><b>AI 상담</b>진단·처방이 아닌<br />정보 안내</p>
+          </div>
+        </div>
+        <p class="showcase-hint reveal">옆으로 넘겨보세요</p>
       </div>
     </section>
 
@@ -290,7 +369,10 @@
         </h2>
 
         <div class="reveal phone-wrap">
-          <div class="phone" data-screen="사진 → 회복 프로파일 변환"></div>
+          <div class="phone has-shot">
+            <img class="phone-shot" src="screens/ocr.png"
+              alt="산모수첩 사진에서 AI가 읽어낸 회복 프로파일" loading="lazy" />
+          </div>
         </div>
 
         <ol class="steps reveal">
@@ -324,6 +406,28 @@
             <span class="chip">POD 6주+</span><span class="chip">제왕절개</span><span class="chip">통증 감소</span><span class="chip">ACOG 736</span>
           </p>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= S6.5 · 실제 작동 영상 ================= -->
+    <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="shell">
+        <span class="section-tag">실제 작동 영상</span>
+        <h2 id="demo-title" class="section-title reveal">
+          움직이는 온맘을 확인하세요.
+        </h2>
+
+        <div class="reveal phone-wrap">
+          <div class="phone has-shot phone-video">
+            <video class="phone-shot" poster="screens/demo_poster.jpg"
+              controls playsinline muted loop preload="none"
+              aria-label="온맘 실제 작동 시연 영상">
+              <source src="screens/demo.mp4" type="video/mp4" />
+              브라우저가 영상을 지원하지 않습니다.
+            </video>
+          </div>
+        </div>
+        <p class="demo-note reveal">▶ 재생을 눌러 사진 한 장 → 회복 안내까지 실제 흐름을 확인하세요.</p>
       </div>
     </section>
 

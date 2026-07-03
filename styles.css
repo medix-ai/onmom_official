@@ -639,6 +639,18 @@ b { font-weight: 700; color: var(--text-strong); }
 .form-msg.ok { color: var(--ok); }
 .form-msg.err { color: var(--coral); }
 
+/* 사업 소개 링크 (파트너 문의 하단) */
+.biz-link {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-sub);
+  text-decoration: none;
+}
+.biz-link:hover { color: var(--coral); }
+
 /* ---------------- 푸터 ---------------- */
 .site-footer {
   background: #fff;

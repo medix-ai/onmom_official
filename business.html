@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>온맘 — 비즈니스 모델</title>
+  <meta name="description" content="온맘 비즈니스 모델 — 퇴원 후 6주 산모 회복 공백을 산부인과·조리원·지역 보건소에 연결하는 산후관리 플랫폼. B2B2C → B2B SaaS → B2G 성장 구조." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="온맘 — 비즈니스 모델" />
+  <meta property="og:description" content="산모 회복 공백을 메우는 지역 연계 플랫폼. 산모는 무료, 기관·지자체가 지불하는 B2B2C→B2B→B2G 구조." />
+  <meta property="og:image" content="onmom_logo.png" />
+  <meta name="theme-color" content="#FB6F6F" />
+  <link rel="icon" type="image/png" href="onmom_logo.png" />
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ============ 사업 소개 페이지 전용 ============ */
+    body { word-break: keep-all; }        /* 한글 단어 중간 끊김 방지 */
+    .biz-hero {
+      padding: 96px 0 44px;
+      text-align: center;
+      background:
+        radial-gradient(120% 90% at 50% -10%, var(--coral-tint) 0%, transparent 60%),
+        var(--bg);
+    }
+    .biz-hero h1 {
+      font-size: 30px;
+      line-height: 1.32;
+      font-weight: 800;
+      color: var(--text-strong);
+      letter-spacing: -0.03em;
+      margin: 14px 0 16px;
+    }
+    .biz-hero p { font-size: 16px; color: var(--text-body); }
+    .biz-hero .meta {
+      margin-top: 18px; font-size: 13px; color: var(--text-sub); font-weight: 600;
+    }
+
+    /* 섹션 번호 헤더 */
+    .biz-sec { padding: 40px 0; border-top: 1px solid var(--line); }
+    .biz-sec:first-of-type { border-top: none; }
+    .sec-no {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 13px; font-weight: 800; color: var(--coral);
+      letter-spacing: 0.02em; margin-bottom: 12px;
+    }
+    .sec-no b {
+      font-size: 12px; color: #fff; background: var(--coral);
+      width: 26px; height: 26px; border-radius: 8px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .biz-h2 {
+      font-size: 22px; font-weight: 800; color: var(--text-strong);
+      letter-spacing: -0.02em; line-height: 1.4; margin-bottom: 18px;
+    }
+    .biz-lead { font-size: 15.5px; color: var(--text-body); margin-bottom: 20px; }
+
+    /* 강조 인용 박스 */
+    .quote-box {
+      background: var(--coral-tint); border-radius: 16px;
+      padding: 20px 22px; font-size: 17px; font-weight: 700;
+      color: var(--text-strong); line-height: 1.55; letter-spacing: -0.02em;
+      border-left: 4px solid var(--coral); margin-bottom: 22px;
+    }
+    .bullet-list { list-style: none; display: grid; gap: 14px; }
+    .bullet-list li {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 15px 16px; font-size: 14.5px;
+      color: var(--text-body); line-height: 1.55;
+    }
+    .bullet-list li b { color: var(--text-strong); }
+    .bullet-list li .k {
+      display: inline-block; font-size: 12px; font-weight: 800;
+      color: var(--coral); margin-bottom: 3px;
+    }
+
+    /* Before / After */
+    .ba-grid { display: grid; gap: 14px; }
+    .ba-card { border-radius: 16px; padding: 18px; }
+    .ba-card h3 { font-size: 14px; font-weight: 800; margin-bottom: 12px; }
+    .ba-card .flow { font-size: 14.5px; line-height: 2; color: var(--text-body); }
+    .ba-before { background: #F4F5F7; }
+    .ba-before h3 { color: var(--text-sub); }
+    .ba-before .gap { color: var(--coral); font-weight: 800; }
+    .ba-after { background: var(--coral-tint); }
+    .ba-after h3 { color: var(--coral); }
+    .ba-after b { color: var(--text-strong); }
+
+    /* 데이터 테이블 */
+    .table-wrap { width: 100%; }
+    table.data {
+      width: 100%; table-layout: fixed; border-collapse: collapse;
+      font-size: 13px; background: var(--card);
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+    table.data td, table.data th { overflow-wrap: anywhere; }
+    table.data th, table.data td {
+      text-align: left; padding: 11px 12px; vertical-align: top;
+      border-bottom: 1px solid var(--line); line-height: 1.5;
+    }
+    table.data thead th {
+      background: var(--coral); color: #fff; font-weight: 700; font-size: 13px;
+      border-bottom: none;
+    }
+    table.data tbody tr:last-child td { border-bottom: none; }
+    table.data td b, table.data td strong { color: var(--text-strong); }
+    table.data .tier { font-weight: 800; color: var(--coral); white-space: nowrap; }
+    table.data tfoot td {
+      background: var(--coral-tint); font-weight: 800; color: var(--text-strong);
+    }
+
+    /* BMC 그리드 */
+    .bmc { display: grid; gap: 12px; }
+    .bmc-item {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 15px 16px;
+    }
+    .bmc-item .lbl {
+      font-size: 12px; font-weight: 800; color: var(--coral);
+      display: block; margin-bottom: 6px;
+    }
+    .bmc-item p { font-size: 14px; color: var(--text-body); line-height: 1.55; }
+
+    /* Phase 카드 */
+    .phase { display: grid; gap: 16px; }
+    .phase-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px; position: relative; overflow: hidden;
+    }
+    .phase-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+      background: var(--coral);
+    }
+    .phase-tag {
+      display: inline-block; font-size: 11px; font-weight: 800; color: #fff;
+      background: var(--coral); padding: 4px 10px; border-radius: 999px;
+      letter-spacing: 0.03em; margin-bottom: 10px;
+    }
+    .phase-card h3 { font-size: 17px; font-weight: 800; color: var(--text-strong); margin-bottom: 4px; }
+    .phase-card .sub { font-size: 13px; color: var(--text-sub); margin-bottom: 14px; }
+    .phase-rows { display: grid; gap: 9px; }
+    .phase-row { display: grid; grid-template-columns: 68px 1fr; gap: 10px; font-size: 13.5px; }
+    .phase-row .rk { color: var(--text-sub); font-weight: 700; }
+    .phase-row .rv { color: var(--text-body); line-height: 1.5; }
+    .phase-row .rv b { color: var(--text-strong); }
+    .phase-2 .phase-tag, .phase-2 .phase-card::before { }
+
+    /* 이해관계자 카드 */
+    .stake { display: grid; gap: 14px; }
+    .stake-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 18px;
+    }
+    .stake-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .stake-head h3 { font-size: 16px; font-weight: 800; color: var(--text-strong); }
+    .stake-head .badge {
+      font-size: 11px; font-weight: 800; color: var(--coral);
+      background: var(--coral-tint); padding: 3px 9px; border-radius: 999px;
+    }
+    .stake-card ul { list-style: none; display: grid; gap: 9px; }
+    .stake-card li {
+      font-size: 14px; color: var(--text-body); line-height: 1.5;
+      padding-left: 18px; position: relative;
+    }
+    .stake-card li::before {
+      content: ""; position: absolute; left: 2px; top: 9px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--coral);
+    }
+    .stake-card li b { color: var(--text-strong); }
+
+    /* TAM/SAM/SOM 퍼널 */
+    .funnel { display: grid; gap: 12px; }
+    .funnel-row {
+      border-radius: 16px; padding: 18px 20px; color: #fff;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .funnel-row .t { font-size: 13px; font-weight: 800; opacity: .9; letter-spacing: 0.05em; }
+    .funnel-row .v { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+    .funnel-row .d { font-size: 12.5px; opacity: .92; line-height: 1.5; margin-top: 4px; }
+    .f-tam { background: #C2506B; }
+    .f-sam { background: #E06A80; margin: 0 6px; }
+    .f-som { background: var(--coral); margin: 0 14px; }
+
+    /* GTM 스텝 */
+    .steps-h { display: grid; gap: 12px; counter-reset: st; }
+    .step-h {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 16px 16px 16px 56px; position: relative;
+    }
+    .step-h::before {
+      counter-increment: st; content: counter(st);
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      width: 28px; height: 28px; border-radius: 9px;
+      background: var(--coral); color: #fff; font-weight: 800; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-h h3 { font-size: 15px; font-weight: 800; color: var(--text-strong); }
+    .step-h p { font-size: 13px; color: var(--text-sub); margin-top: 2px; }
+
+    /* 로드맵 타임라인 */
+    .road { display: grid; gap: 0; position: relative; padding-left: 8px; }
+    .road-item {
+      position: relative; padding: 0 0 22px 26px;
+      border-left: 2px solid var(--coral-tint-2);
+    }
+    .road-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+    .road-item::before {
+      content: ""; position: absolute; left: -7px; top: 2px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--coral); box-shadow: 0 0 0 4px var(--coral-tint);
+    }
+    .road-item .yr { font-size: 13px; font-weight: 800; color: var(--coral); }
+    .road-item h3 { font-size: 15.5px; font-weight: 800; color: var(--text-strong); margin: 2px 0 6px; }
+    .road-item p { font-size: 13.5px; color: var(--text-body); line-height: 1.6; }
+
+    .foot-note {
+      font-size: 12px; color: var(--text-sub); line-height: 1.6;
+      margin-top: 16px; padding: 12px 14px; background: #F4F5F7; border-radius: 10px;
+    }
+
+    @media (max-width: 380px) {
+      .biz-hero h1 { font-size: 26px; }
+      .phase-row { grid-template-columns: 60px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="온맘 홈">
+        <img src="onmom_logo.png" alt="온맘 로고" class="brand-logo" />
+        <span class="brand-name">온맘</span>
+      </a>
+      <a class="btn btn-mini" href="index.html">산모용 홈</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="biz-hero">
+      <div class="shell">
+        <span class="eyebrow">Business Model · 2026</span>
+        <h1>산모 회복 공백을 메우는<br /><span class="accent">지역 연계 플랫폼</span></h1>
+        <p>퇴원 후 6주, 사라지는 산모의 회복 데이터를<br />산부인과·조리원·지역 보건소에 연결합니다.</p>
+        <p class="meta">온맘 (Onmam) · Postpartum Recovery Platform</p>
+      </div>
+    </section>
+
+    <!-- 00 Executive Summary -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>00</b>EXECUTIVE SUMMARY</span>
+        <div class="quote-box">
+          온맘은 퇴원 후 6주간 사라지는 산모의 회복 데이터를,
+          산부인과·조리원·지역 보건소에 연결해주는 산후관리 플랫폼입니다.
+        </div>
+        <p class="biz-lead">
+          산모는 <b>무료</b>로 사용하고, 실제 비용을 지불하는 고객은 산부인과·조리원 같은
+          의료·돌봄 기관, 그리고 최종적으로 지자체 모자보건 예산입니다.
+          <b>B2B2C → B2B SaaS → B2G</b> 구조로 단계적으로 성장하며, 이미 전국 시행 중인
+          ‘산모신생아 건강관리 지원사업’ 바우처 인프라 위에 얹히는 구조라 B2G 명분이 뚜렷합니다.
+        </p>
+        <ul class="bullet-list">
+          <li>
+            <span class="k">핵심 차별화</span>
+            AI는 <b>구조화만</b> 합니다 (CRE — Clinical Recovery Engine). 진단·판단은 규칙엔진과
+            임상 임계값이, 최종 결정은 사람이 합니다.
+          </li>
+          <li>
+            <span class="k">1차 고객 (Beachhead)</span>
+            산부인과 Champion Doctor → 산후조리원 → 지역 보건소(분만취약지) → 지자체 모자보건사업(B2G)
+          </li>
+          <li>
+            <span class="k">시장 근거</span>
+            2025년 출생아 수 <b>25만 4,500명</b>, 전년 대비 <b>+6.8%</b> — 시장은 축소가 아니라 반등 국면.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 01 문제 정의 -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>01</b>문제 정의</span>
+        <h2 class="biz-h2">퇴원 후 6주, 관리가 사라지는 구간</h2>
+        <p class="biz-lead">
+          산모는 분만 후 병원(또는 조리원)을 나서는 순간부터 6주 검진까지 약 <b>4~6주간 의료
+          시스템과의 접점을 잃습니다.</b> 이 기간 신체 회복·수유·산후우울 스크리닝·신생아 케어가
+          동시에 일어나지만, 이를 추적하는 주체가 없습니다.
+        </p>
+
+        <div class="ba-grid">
+          <div class="ba-card ba-before">
+            <h3>Before · 현재</h3>
+            <div class="flow">
+              분만 → 퇴원 / 조리원 퇴소<br />
+              ↓<br />
+              <span class="gap">4~6주 관리 공백 (데이터 단절)</span><br />
+              ↓<br />
+              6주 검진 (뒤늦은 발견)
+            </div>
+          </div>
+          <div class="ba-card ba-after">
+            <h3>After · 온맘</h3>
+            <div class="flow">
+              분만 → 퇴원 / 조리원 퇴소<br />
+              ↓<br />
+              <b>온맘 (Recovery Profile · SDOH · Red Flag)</b><br />
+              ↓<br />
+              의료진·보건소 사전 확인 → 선제 대응
+            </div>
+          </div>
+        </div>
+
+        <p class="biz-lead" style="margin-top:20px;">
+          <b>지역 격차라는 두 번째 문제 —</b> 분만취약지·의료취약지 산모는 조리원·산부인과 접근성
+          자체가 낮아 공백이 더 길고 깊습니다. 온맘은 이 공백을 ‘지역과 무관하게’ 동일한 수준으로
+          메우며, 이는 SDOH 프레임과 정부의 지역 모자보건 정책 방향에 직접 부합합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 고객 세그먼트 -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>02</b>고객 세그먼트 — 누가 돈을 내는가</span>
+        <p class="biz-lead">산모는 최종 사용자이지만 무료입니다. 비용을 지불하는 주체는 4단계로 확장됩니다.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <colgroup><col style="width:15%" /><col style="width:35%" /><col style="width:50%" /></colgroup>
+            <thead>
+              <tr><th>단계</th><th>고객</th><th>역할·성격</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="tier">1차</td><td><b>산부인과</b><br />Champion Doctor</td><td>초기 도입 파트너. 임상 신뢰 확보 및 IRB 기반 파일럿의 시작점.</td></tr>
+              <tr><td class="tier">2차</td><td><b>산후조리원</b></td><td>입소 기간 데이터 연속성 확보 + 퇴소 후 재택 관리로 자연 연결.</td></tr>
+              <tr><td class="tier">3차</td><td><b>지역 보건소</b><br />(분만취약지 우선)</td><td>지역 산모 관리 인프라 확장. SDOH·지역격차 서사와 직결.</td></tr>
+              <tr><td class="tier">4차<br />(B2G)</td><td><b>지자체 모자보건사업</b><br />(산모신생아 건강관리 지원사업 등)</td><td>기존 바우처 예산선에 ‘관리 도구’로 편입. 전국 산모 무료 확장의 발판.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="biz-lead" style="margin-top:18px;">
+          <b>왜 B2G 명분이 뚜렷한가 —</b> 보건복지부는 이미 산모신생아 건강관리사 지원사업으로
+          가정방문 바우처를 전국 단위로 지급합니다. 온맘은 <b>새 예산을 만드는 것이 아니라</b>
+          기존 지원사업의 관리 품질을 높이는 디지털 도구로 포지셔닝 — 새 수가·제도 신설보다 진입
+          장벽이 낮습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 03 Business Model Canvas -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>03</b>Business Model Canvas</span>
+        <div class="bmc">
+          <div class="bmc-item"><span class="lbl">고객 세그먼트</span><p>1차 산부인과 Champion Doctor → 2차 조리원 → 3차 지역 보건소 → 4차 지자체 모자보건사업. 최종 사용자(산모)는 무료.</p></div>
+          <div class="bmc-item"><span class="lbl">가치 제안</span><p>퇴원~6주 검진 공백을 메우는 회복 데이터 연결. 위험 조기 발견, 지역 격차 완화, 기관의 산모 관리 성과 가시화.</p></div>
+          <div class="bmc-item"><span class="lbl">채널</span><p>Champion Doctor 직접 도입 → 조리원 협력 확산 → 보건소 시범사업 → 지자체 예산 편입.</p></div>
+          <div class="bmc-item"><span class="lbl">고객 관계</span><p>임상 파일럿·공동 연구(IRB) 기반 신뢰 → SaaS 구독 → 지자체 위탁·협약.</p></div>
+          <div class="bmc-item"><span class="lbl">수익원</span><p>기관 대상 SaaS 구독료(Phase 2) + 지자체 모자보건 예산 편입(Phase 3). 산모는 무료.</p></div>
+          <div class="bmc-item"><span class="lbl">핵심 자원</span><p>CRE(Clinical Recovery Engine), Recovery Profile 구조화 스키마, 검증된 임상 임계값(ACOG·WHO·NICE), 40 페르소나·4 시나리오 레퍼런스.</p></div>
+          <div class="bmc-item"><span class="lbl">핵심 활동</span><p>비정형 데이터(EMR 사진·산모수첩·증상) 구조화, 규칙엔진 기반 위험도 판정, 커뮤니티 리소스 라우팅, 기관 온보딩.</p></div>
+          <div class="bmc-item"><span class="lbl">핵심 파트너</span><p>경희의료원 산부인과(거점), 협력 조리원, 지역 보건소, 임상 자문.</p></div>
+          <div class="bmc-item"><span class="lbl">비용 구조</span><p>앱 고도화·서버/보안, 파일럿 운영비, 임상 검증 비용, 인건비. (MVP 대부분 완료 → 비용 무게중심은 ‘검증’)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Revenue Model -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>04</b>Revenue Model — Phase 구조</span>
+        <p class="biz-lead">병원·조리원·보건소가 왜 돈을 내는가에 대한 답은 3단계: 임상 신뢰 확보 → SaaS 확산 → 정부 예산 편입.</p>
+        <div class="phase">
+          <div class="phase-card">
+            <span class="phase-tag">PHASE 1 · B2B2C</span>
+            <h3>무상 PoC + 임상 파트너십</h3>
+            <p class="sub">산부인과·조리원 협력 · 데이터 파트너십</p>
+            <div class="phase-rows">
+              <div class="phase-row"><span class="rk">기간</span><span class="rv">2026.07 ~ 2027.12 (18개월)</span></div>
+              <div class="phase-row"><span class="rk">구조</span><span class="rv">경희의료원 산부인과 + 협력 조리원 1곳. 무상 PoC + IRB 절차 → 검증 완료 후 라이선스 전환.</span></div>
+              <div class="phase-row"><span class="rk">수익</span><span class="rv"><b>무상</b> (임상 데이터 파트너십). 산모 100명 대상 CRE 정확도·Red Flag 이관율 검증.</span></div>
+              <div class="phase-row"><span class="rk">마일스톤</span><span class="rv">IRB 승인 · 임상 데이터 100건 확보 · 확정 임계값 반영 완료.</span></div>
+            </div>
+          </div>
+
+          <div class="phase-card phase-2">
+            <span class="phase-tag">PHASE 2 · B2B SaaS</span>
+            <h3>B2B SaaS 확산</h3>
+            <p class="sub">산부인과·조리원 대상 · 분만취약지 보건소 우선 확장</p>
+            <div class="phase-rows">
+              <div class="phase-row"><span class="rk">기간</span><span class="rv">2028 ~ 2029 (24개월)</span></div>
+              <div class="phase-row"><span class="rk">구조</span><span class="rv">기관 단위 구독. 분만취약지 보건소 시범사업 연계 → 전국 확산.</span></div>
+              <div class="phase-row"><span class="rk">수익</span><span class="rv"><b>월 80만원 / 기관</b> · 연 <b>2.9억원</b> (Y2 · 30개 기관 기준).</span></div>
+              <div class="phase-row"><span class="rk">마일스톤</span><span class="rv">보건소 시범사업 선정 · 30개 기관 계약 · 영업·임상자문 인력 채용.</span></div>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <span class="phase-tag">PHASE 3 · B2G</span>
+            <h3>지자체 모자보건 예산 편입</h3>
+            <p class="sub">산모신생아 건강관리 지원사업 연계</p>
+            <div class="phase-rows">
+              <div class="phase-row"><span class="rk">기간</span><span class="rv">2030 ~ (지속)</span></div>
+              <div class="phase-row"><span class="rk">구조</span><span class="rv">지자체 예산에 관리 도구로 편입. 산모 본인부담 없이 바우처로 커버.</span></div>
+              <div class="phase-row"><span class="rk">수익</span><span class="rv">연 <b>15억원</b> (추정). SAM 30억 × 점유율 50% 가정.</span></div>
+              <div class="phase-row"><span class="rk">마일스톤</span><span class="rv">지자체 시범사업 신청 · 본 사업 편입 · 지역 산후관리 격차 지표 개선.</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="foot-note">
+          ※ Phase 2·3 수익 목표치는 사업계획 가정치이며, 실제 계약 단가는 기관 협상 및 지자체 예산
+          규모에 따라 조정될 수 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 05 Why They Pay -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>05</b>Why They Pay — 이해관계자별 지불 이유</span>
+        <div class="stake">
+          <div class="stake-card">
+            <div class="stake-head"><h3>산부인과</h3><span class="badge">B2B2C</span></div>
+            <ul>
+              <li><b>외래 재방문 효율화</b> — 6주 검진 전 산모 상태를 사전 확인해 진료 준비 시간 단축</li>
+              <li><b>위험 조기 발견</b> — 제왕절개 상처 감염, 산후출혈 지연 등 Red Flag를 검진 전 포착</li>
+              <li><b>환자 관계 관리</b> — 퇴원 후에도 ‘관리받고 있다’는 신뢰 → 재방문·평판</li>
+            </ul>
+          </div>
+          <div class="stake-card">
+            <div class="stake-head"><h3>산후조리원</h3><span class="badge">B2B2C → SaaS</span></div>
+            <ul>
+              <li><b>퇴소 후 케어 연속성</b> — 관리가 퇴소와 함께 끊기지 않는다는 것 자체가 마케팅 포인트</li>
+              <li><b>산모 만족도 지표</b> — 회복 데이터 기반 성과 리포트 제공 가능</li>
+            </ul>
+          </div>
+          <div class="stake-card">
+            <div class="stake-head"><h3>지역 보건소</h3><span class="badge">SaaS → B2G</span></div>
+            <ul>
+              <li><b>관리 인프라 확보</b> — 분만취약지 인력 부족을 데이터 구조화로 보완</li>
+              <li><b>모자보건 지표 관리</b> — 산후우울 스크리닝률, 위기 이관율 등 정책 성과 지표로 활용</li>
+            </ul>
+          </div>
+          <div class="stake-card">
+            <div class="stake-head"><h3>지자체</h3><span class="badge">B2G</span></div>
+            <ul>
+              <li><b>바우처 사업 품질 향상</b> — 새 예산 없이 기존 지원사업 위에 얹는 구조</li>
+              <li><b>지역 격차 대응 근거</b> — 분만취약지 특별 배정 등 정책 근거 데이터 축적</li>
+              <li><b>저출산 정책 성과 가시화</b> — 산후관리 만족도·위기 조기발견 실적 제시 가능</li>
+            </ul>
+          </div>
+        </div>
+        <p class="biz-lead" style="margin-top:18px; font-weight:700; color:var(--text-strong);">
+          한쪽만 이득인 모델이 아니라, 의료·돌봄·행정 생태계 전체가 같은 방향으로 움직이는 구조입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 06 시장 규모 -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>06</b>시장 규모 — TAM · SAM · SOM</span>
+        <div class="funnel">
+          <div class="funnel-row f-tam">
+            <span class="t">TAM</span>
+            <span class="v">약 7,700억원 / 년</span>
+            <span class="d">전국 산후조리 관련 지출. 2025년 출생아 25만 4,500명 × 조리원 이용률 81.2% × 2주 평균 373만원 추정.</span>
+          </div>
+          <div class="funnel-row f-sam">
+            <span class="t">SAM</span>
+            <span class="v">약 30~50억원 / 년</span>
+            <span class="d">기존 지자체 바우처 인프라 위에서 온맘이 ‘관리 도구’로 편입 가능한 예산 범위 (추정).</span>
+          </div>
+          <div class="funnel-row f-som">
+            <span class="t">SOM</span>
+            <span class="v">약 3억원 / 년</span>
+            <span class="d">Phase 2 목표. 경희의료원 권역 + 초기 협력 30개 기관 × 월 80만원 × 12개월.</span>
+          </div>
+        </div>
+        <p class="foot-note">
+          ※ TAM은 통계청·보건복지부 공개 데이터 기반 추정치이며, SAM은 지자체별 산모신생아 건강관리
+          지원사업 예산 총액 확인 후 확정 예정입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 07 Go-To-Market -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>07</b>Go-To-Market</span>
+        <p class="biz-lead">Champion Doctor 한 명에서 시작해, 조리원 → 보건소 네트워크로 단계적으로 확장합니다.</p>
+        <div class="steps-h">
+          <div class="step-h"><h3>Champion Doctor</h3><p>경희의료원 산부인과 1명</p></div>
+          <div class="step-h"><h3>진료과 확산</h3><p>산부인과 + 협력 조리원 1곳</p></div>
+          <div class="step-h"><h3>보건소 시범</h3><p>분만취약지 보건소 3곳</p></div>
+          <div class="step-h"><h3>지자체 네트워크</h3><p>모자보건사업 편입 확산</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 Use of Funds -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>08</b>Use of Funds</span>
+        <p class="biz-lead">작게 검증하고, 크게 확장합니다.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <colgroup><col style="width:33%" /><col style="width:44%" /><col style="width:23%" /></colgroup>
+            <thead><tr><th>항목</th><th>내용</th><th style="text-align:right;">금액</th></tr></thead>
+            <tbody>
+              <tr><td><b>서버 및 인프라</b></td><td>AWS, DB, 백업, 보안</td><td style="text-align:right;">200만원</td></tr>
+              <tr><td><b>앱 유지보수</b></td><td>버그 수정, 기능 개선</td><td style="text-align:right;">300만원</td></tr>
+              <tr><td><b>산모 모집·관리</b></td><td>설문, 연락, 추적관리</td><td style="text-align:right;">300만원</td></tr>
+              <tr><td><b>참여 보상</b></td><td>100명 × 3만원</td><td style="text-align:right;">300만원</td></tr>
+              <tr><td><b>연구 수행</b></td><td>통계, 데이터 정리</td><td style="text-align:right;">200만원</td></tr>
+              <tr><td><b>PoC 운영</b></td><td>산부인과·조리원 협의, 회의</td><td style="text-align:right;">200만원</td></tr>
+              <tr><td><b>발표·학회·IRB</b></td><td>포스터, 발표자료</td><td style="text-align:right;">100만원</td></tr>
+              <tr><td><b>예비비</b></td><td>예상 외 비용</td><td style="text-align:right;">200만원</td></tr>
+            </tbody>
+            <tfoot><tr><td>합계</td><td></td><td style="text-align:right;">1,800만원</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 Growth Roadmap -->
+    <section class="biz-sec">
+      <div class="shell">
+        <span class="sec-no"><b>09</b>Growth Roadmap</span>
+        <div class="road">
+          <div class="road-item">
+            <span class="yr">2026 · MVP &amp; PoC</span>
+            <h3>경희의료원 산부인과 파일럿</h3>
+            <p>CRE 정확도 검증 · 확정 임계값 전체 반영</p>
+          </div>
+          <div class="road-item">
+            <span class="yr">2027 · Clinical Pilot</span>
+            <h3>IRB 기반 확대 파일럿</h3>
+            <p>조리원 협력 확장 · Recovery Profile 고도화</p>
+          </div>
+          <div class="road-item">
+            <span class="yr">2028 · Regional Expansion</span>
+            <h3>분만취약지 보건소 시범사업</h3>
+            <p>SDOH 가중치 리스크 스트래티피케이션 적용 · 지자체 협약 준비</p>
+          </div>
+          <div class="road-item">
+            <span class="yr">2029+ · Community Recovery Platform</span>
+            <h3>산모신생아 건강관리 지원사업 연계</h3>
+            <p>전국 보건소 표준 도구화 · 지역 모자보건 지표 플랫폼으로 진화</p>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:32px; justify-content:center;">
+          <a class="btn btn-primary" href="mailto:contact@onmom.kr?subject=온맘%20기관·파트너%20문의">기관 · 파트너 문의</a>
+          <a class="btn btn-tint" href="index.html">산모용 홈 보기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="foot-brand">
+        <img src="onmom_logo.png" alt="" class="foot-logo" />
+        <span>온맘</span>
+      </div>
+      <p class="team">온맘 팀 (경희의대) · 팀원 4인</p>
+      <p class="disclaimer">
+        본 문서의 시장 규모·수익 목표치는 공개 데이터 기반 추정치이며 실제와 다를 수 있습니다.
+        온맘은 정보 제공 서비스이며 의학적 진단·처방을 대체하지 않습니다.
+      </p>
+      <p class="copyright">© 2026 Onmom. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

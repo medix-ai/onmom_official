@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>온맘 — 비즈니스 모델</title>
-  <meta name="description" content="온맘 비즈니스 모델 — 퇴원 후 6주 산모 회복 공백을 산부인과·조리원·지역 보건소에 연결하는 산후관리 플랫폼. B2B2C → B2B SaaS → B2G 성장 구조." />
+  <title>온맘 - 비즈니스 모델</title>
+  <meta name="description" content="온맘 비즈니스 모델 - 퇴원 후 6주 산모 회복 공백을 산부인과·조리원·지역 보건소에 연결하는 산후관리 플랫폼. B2B2C → B2B SaaS → B2G 성장 구조." />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="온맘 — 비즈니스 모델" />
+  <meta property="og:title" content="온맘 - 비즈니스 모델" />
   <meta property="og:description" content="산모 회복 공백을 메우는 지역 연계 플랫폼. 산모는 무료, 기관·지자체가 지불하는 B2B2C→B2B→B2G 구조." />
   <meta property="og:image" content="onmom_logo.png" />
   <meta name="theme-color" content="#FB6F6F" />
@@ -228,6 +228,53 @@
       .biz-hero h1 { font-size: 26px; }
       .phase-row { grid-template-columns: 60px 1fr; }
     }
+
+    /* ---------- 태블릿 (≥768px) ---------- */
+    @media (min-width: 768px) {
+      .biz-hero { padding: 112px 0 56px; }
+      .biz-hero h1 { font-size: 38px; }
+      .biz-hero p { font-size: 17px; }
+      .biz-sec { padding: 56px 0; }
+      .biz-h2 { font-size: 26px; }
+      .biz-lead { font-size: 16px; }
+      .quote-box { font-size: 19px; padding: 24px 28px; }
+
+      .ba-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bmc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stake { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps-h { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps-h .step-h::before { top: 16px; transform: none; }
+      .funnel-row .v { font-size: 26px; }
+      .f-sam { margin: 0 24px; }
+      .f-som { margin: 0 48px; }
+
+      .cta-row .btn { flex: 0 1 240px; }
+    }
+
+    /* ---------- 데스크톱 (≥1024px) ---------- */
+    @media (min-width: 1024px) {
+      :root { --shell: 960px; }   /* 문서형 페이지 · 랜딩보다 좁게 */
+      .biz-hero { padding: 128px 0 64px; }
+      .biz-hero h1 { font-size: clamp(40px, 2.4vw + 18px, 48px); }
+      .biz-sec { padding: 64px 0; }
+      .biz-h2 { font-size: 28px; }
+      .biz-lead { font-size: 16.5px; max-width: 46em; }
+      .bullet-list li { font-size: 15px; padding: 18px 20px; }
+
+      .bmc { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .phase { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .phase-row { grid-template-columns: 60px 1fr; }
+      .steps-h { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+      .step-h { padding: 52px 16px 16px; }
+      .step-h::before { left: 16px; top: 16px; }
+      .funnel { max-width: 760px; margin: 0 auto; }
+      .road { max-width: 760px; margin: 0 auto; }
+      .road-item { padding-bottom: 26px; }
+      .road-item h3 { font-size: 17px; }
+      .table-wrap { max-width: 860px; margin: 0 auto; }
+      table.data { font-size: 14px; }
+      table.data th, table.data td { padding: 13px 14px; }
+    }
   </style>
 </head>
 <body>
@@ -271,7 +318,7 @@
         <ul class="bullet-list">
           <li>
             <span class="k">핵심 차별화</span>
-            AI는 <b>구조화만</b> 합니다 (CRE — Clinical Recovery Engine). 진단·판단은 규칙엔진과
+            AI는 <b>구조화만</b> 합니다 (CRE - Clinical Recovery Engine). 진단·판단은 규칙엔진과
             임상 임계값이, 최종 결정은 사람이 합니다.
           </li>
           <li>
@@ -280,7 +327,7 @@
           </li>
           <li>
             <span class="k">시장 근거</span>
-            2025년 출생아 수 <b>25만 4,500명</b>, 전년 대비 <b>+6.8%</b> — 시장은 축소가 아니라 반등 국면.
+            2025년 출생아 수 <b>25만 4,500명</b>, 전년 대비 <b>+6.8%</b> - 시장은 축소가 아니라 반등 국면.
           </li>
         </ul>
       </div>
@@ -321,7 +368,7 @@
         </div>
 
         <p class="biz-lead" style="margin-top:20px;">
-          <b>지역 격차라는 두 번째 문제 —</b> 분만취약지·의료취약지 산모는 조리원·산부인과 접근성
+          <b>지역 격차라는 두 번째 문제 -</b> 분만취약지·의료취약지 산모는 조리원·산부인과 접근성
           자체가 낮아 공백이 더 길고 깊습니다. 온맘은 이 공백을 ‘지역과 무관하게’ 동일한 수준으로
           메우며, 이는 SDOH 프레임과 정부의 지역 모자보건 정책 방향에 직접 부합합니다.
         </p>
@@ -331,7 +378,7 @@
     <!-- 02 고객 세그먼트 -->
     <section class="biz-sec">
       <div class="shell">
-        <span class="sec-no"><b>02</b>고객 세그먼트 — 누가 돈을 내는가</span>
+        <span class="sec-no"><b>02</b>고객 세그먼트 - 누가 돈을 내는가</span>
         <p class="biz-lead">산모는 최종 사용자이지만 무료입니다. 비용을 지불하는 주체는 4단계로 확장됩니다.</p>
         <div class="table-wrap">
           <table class="data">
@@ -348,9 +395,9 @@
           </table>
         </div>
         <p class="biz-lead" style="margin-top:18px;">
-          <b>왜 B2G 명분이 뚜렷한가 —</b> 보건복지부는 이미 산모신생아 건강관리사 지원사업으로
+          <b>왜 B2G 명분이 뚜렷한가 -</b> 보건복지부는 이미 산모신생아 건강관리사 지원사업으로
           가정방문 바우처를 전국 단위로 지급합니다. 온맘은 <b>새 예산을 만드는 것이 아니라</b>
-          기존 지원사업의 관리 품질을 높이는 디지털 도구로 포지셔닝 — 새 수가·제도 신설보다 진입
+          기존 지원사업의 관리 품질을 높이는 디지털 도구로 포지셔닝 - 새 수가·제도 신설보다 진입
           장벽이 낮습니다.
         </p>
       </div>
@@ -377,7 +424,7 @@
     <!-- 04 Revenue Model -->
     <section class="biz-sec">
       <div class="shell">
-        <span class="sec-no"><b>04</b>Revenue Model — Phase 구조</span>
+        <span class="sec-no"><b>04</b>Revenue Model - Phase 구조</span>
         <p class="biz-lead">병원·조리원·보건소가 왜 돈을 내는가에 대한 답은 3단계: 임상 신뢰 확보 → SaaS 확산 → 정부 예산 편입.</p>
         <div class="phase">
           <div class="phase-card">
@@ -426,36 +473,36 @@
     <!-- 05 Why They Pay -->
     <section class="biz-sec">
       <div class="shell">
-        <span class="sec-no"><b>05</b>Why They Pay — 이해관계자별 지불 이유</span>
+        <span class="sec-no"><b>05</b>Why They Pay - 이해관계자별 지불 이유</span>
         <div class="stake">
           <div class="stake-card">
             <div class="stake-head"><h3>산부인과</h3><span class="badge">B2B2C</span></div>
             <ul>
-              <li><b>외래 재방문 효율화</b> — 6주 검진 전 산모 상태를 사전 확인해 진료 준비 시간 단축</li>
-              <li><b>위험 조기 발견</b> — 제왕절개 상처 감염, 산후출혈 지연 등 Red Flag를 검진 전 포착</li>
-              <li><b>환자 관계 관리</b> — 퇴원 후에도 ‘관리받고 있다’는 신뢰 → 재방문·평판</li>
+              <li><b>외래 재방문 효율화</b> - 6주 검진 전 산모 상태를 사전 확인해 진료 준비 시간 단축</li>
+              <li><b>위험 조기 발견</b> - 제왕절개 상처 감염, 산후출혈 지연 등 Red Flag를 검진 전 포착</li>
+              <li><b>환자 관계 관리</b> - 퇴원 후에도 ‘관리받고 있다’는 신뢰 → 재방문·평판</li>
             </ul>
           </div>
           <div class="stake-card">
             <div class="stake-head"><h3>산후조리원</h3><span class="badge">B2B2C → SaaS</span></div>
             <ul>
-              <li><b>퇴소 후 케어 연속성</b> — 관리가 퇴소와 함께 끊기지 않는다는 것 자체가 마케팅 포인트</li>
-              <li><b>산모 만족도 지표</b> — 회복 데이터 기반 성과 리포트 제공 가능</li>
+              <li><b>퇴소 후 케어 연속성</b> - 관리가 퇴소와 함께 끊기지 않는다는 것 자체가 마케팅 포인트</li>
+              <li><b>산모 만족도 지표</b> - 회복 데이터 기반 성과 리포트 제공 가능</li>
             </ul>
           </div>
           <div class="stake-card">
             <div class="stake-head"><h3>지역 보건소</h3><span class="badge">SaaS → B2G</span></div>
             <ul>
-              <li><b>관리 인프라 확보</b> — 분만취약지 인력 부족을 데이터 구조화로 보완</li>
-              <li><b>모자보건 지표 관리</b> — 산후우울 스크리닝률, 위기 이관율 등 정책 성과 지표로 활용</li>
+              <li><b>관리 인프라 확보</b> - 분만취약지 인력 부족을 데이터 구조화로 보완</li>
+              <li><b>모자보건 지표 관리</b> - 산후우울 스크리닝률, 위기 이관율 등 정책 성과 지표로 활용</li>
             </ul>
           </div>
           <div class="stake-card">
             <div class="stake-head"><h3>지자체</h3><span class="badge">B2G</span></div>
             <ul>
-              <li><b>바우처 사업 품질 향상</b> — 새 예산 없이 기존 지원사업 위에 얹는 구조</li>
-              <li><b>지역 격차 대응 근거</b> — 분만취약지 특별 배정 등 정책 근거 데이터 축적</li>
-              <li><b>저출산 정책 성과 가시화</b> — 산후관리 만족도·위기 조기발견 실적 제시 가능</li>
+              <li><b>바우처 사업 품질 향상</b> - 새 예산 없이 기존 지원사업 위에 얹는 구조</li>
+              <li><b>지역 격차 대응 근거</b> - 분만취약지 특별 배정 등 정책 근거 데이터 축적</li>
+              <li><b>저출산 정책 성과 가시화</b> - 산후관리 만족도·위기 조기발견 실적 제시 가능</li>
             </ul>
           </div>
         </div>
@@ -468,7 +515,7 @@
     <!-- 06 시장 규모 -->
     <section class="biz-sec">
       <div class="shell">
-        <span class="sec-no"><b>06</b>시장 규모 — TAM · SAM · SOM</span>
+        <span class="sec-no"><b>06</b>시장 규모 - TAM · SAM · SOM</span>
         <div class="funnel">
           <div class="funnel-row f-tam">
             <span class="t">TAM</span>
@@ -560,7 +607,7 @@
         </div>
 
         <div class="cta-row" style="margin-top:32px; justify-content:center;">
-          <a class="btn btn-primary" href="mailto:contact@onmom.kr?subject=온맘%20기관·파트너%20문의">기관 · 파트너 문의</a>
+          <a class="btn btn-primary" href="mailto:inmani1555@gmail.com?subject=온맘%20기관·파트너%20문의">기관 · 파트너 문의</a>
           <a class="btn btn-tint" href="index.html">산모용 홈 보기</a>
         </div>
       </div>
@@ -574,7 +621,7 @@
         <img src="onmom_logo.png" alt="" class="foot-logo" />
         <span>온맘</span>
       </div>
-      <p class="team">온맘 팀 (경희의대) · 팀원 4인</p>
+      <p class="partner-line">경희의료원 · 강동경희대병원과 함께합니다</p>
       <p class="disclaimer">
         본 문서의 시장 규모·수익 목표치는 공개 데이터 기반 추정치이며 실제와 다를 수 있습니다.
         온맘은 정보 제공 서비스이며 의학적 진단·처방을 대체하지 않습니다.

@@ -19,9 +19,10 @@
 
   --line: #F2F4F6;
 
-  /* 레이아웃 */
+  /* 레이아웃 (모바일 기본값 · 태블릿/데스크톱은 하단 @media에서 확장) */
   --shell: 480px;
   --pad: 20px;
+  --content-narrow: 640px;   /* 데스크톱에서 글 중심 블록의 최대 폭 */
   --radius: 20px;
   --radius-sm: 14px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -46,7 +47,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 데스크톱에서도 모바일 폭 유지 */
+/* 컨테이너 · 화면 폭에 따라 --shell 값이 바뀜 */
 .shell {
   width: 100%;
   max-width: var(--shell);
@@ -56,6 +57,9 @@ body {
 }
 
 img { max-width: 100%; display: block; }
+video { max-width: 100%; }
+h1, h2, h3, .lead, .hero-sub, .final-sub, .disclaimer { word-break: keep-all; }
+section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
 
 .accent { color: var(--coral); }
 b { font-weight: 700; color: var(--text-strong); }
@@ -136,6 +140,7 @@ b { font-weight: 700; color: var(--text-strong); }
   justify-content: space-between;
 }
 .header-nav { display: flex; align-items: center; gap: 14px; }
+.nav-menu { display: none; }   /* 데스크톱에서만 노출 */
 .nav-link {
   font-size: 14px;
   font-weight: 700;
@@ -174,6 +179,7 @@ b { font-weight: 700; color: var(--text-strong); }
   color: var(--text-strong);
   letter-spacing: -0.03em;
 }
+.hero-copy { min-width: 0; }
 .hero-sub {
   margin: 18px auto 0;
   font-size: 16px;
@@ -193,13 +199,21 @@ b { font-weight: 700; color: var(--text-strong); }
   font-weight: 600;
   color: var(--text-sub);
 }
+.partner-line {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+.partner-line b { color: var(--text-strong); }
 
 /* ---------------- 폰 목업 (빈 화면 플레이스홀더) ---------------- */
 .phone-wrap { display: flex; justify-content: center; margin: 32px 0 4px; }
 .phone {
   position: relative;
   width: 240px;
-  height: 500px;
+  max-width: 100%;
+  aspect-ratio: 12 / 25;   /* 240:500 */
   background: #fff;
   border-radius: 44px;
   padding: 5px;
@@ -278,9 +292,13 @@ b { font-weight: 700; color: var(--text-strong); }
 }
 .shot-item .phone {
   width: 200px;
-  height: 417px;      /* 240:500 비율 유지 */
   border-radius: 38px;
   padding: 5px;
+}
+/* aspect-ratio 미지원 브라우저 폴백 */
+@supports not (aspect-ratio: 1 / 1) {
+  .phone { height: 500px; }
+  .shot-item .phone { height: 417px; }
 }
 .shot-item .phone-shot {
   inset: 5px;
@@ -670,7 +688,7 @@ b { font-weight: 700; color: var(--text-strong); }
 .foot-brand { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
 .foot-logo { width: 28px; height: 28px; border-radius: 8px; }
 .foot-brand span { font-weight: 800; color: var(--text-strong); font-size: 17px; }
-.team { font-size: 14px; color: var(--text-body); font-weight: 600; margin-bottom: 14px; }
+.site-footer .partner-line { margin: 0 0 14px; }
 .disclaimer {
   font-size: 12.5px; color: var(--text-sub); line-height: 1.7;
   max-width: 24em; margin: 0 auto 16px;
@@ -717,4 +735,203 @@ b { font-weight: 700; color: var(--text-strong); }
   .hero-title { font-size: 30px; }
   .section-title { font-size: 22px; }
   .gap-stat .num { font-size: 32px; }
+}
+
+/* ============================================================
+   반응형 · 태블릿(≥768px) / 데스크톱(≥1024px)
+   - 모바일 레이아웃은 그대로 두고, 넓은 화면에서만 폭·그리드 확장
+   ============================================================ */
+
+/* ---------------- 태블릿 ---------------- */
+@media (min-width: 768px) {
+  :root {
+    --shell: 720px;
+    --pad: 28px;
+  }
+
+  .section { padding: 80px 0; }
+  .hero { padding-top: 56px; padding-bottom: 64px; }
+  .hero-title { font-size: 40px; }
+  .section-title { font-size: 28px; }
+  .final-title { font-size: 32px; }
+
+  .cta-row { justify-content: center; }
+  .cta-row .btn { flex: 0 1 220px; }
+
+  /* 폰 목업을 조금 키움 */
+  .phone-wrap .phone { width: 260px; }
+
+  /* S2 · 문제 요소 3열 */
+  .mini-cards { flex-direction: row; }
+  .mini-card { flex: 1; }
+
+  /* S8 · 근거 3열 */
+  .ev-cards { flex-direction: row; align-items: stretch; }
+  .ev-card { flex: 1; }
+
+  /* S9 · 경로 3열 */
+  .route-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .route-title, .route-note { grid-column: 1 / -1; }
+  .route-card { flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 18px; }
+  .route-card p { text-align: center; }
+
+  /* S10 · 부가 기능 3열 */
+  .feature-grid { grid-template-columns: repeat(3, 1fr); }
+  .feature:last-child { grid-column: auto; }
+
+  /* S11 · 비교 행: 라벨 | 내용 */
+  .why-row { flex-direction: row; align-items: center; gap: 16px; }
+  .why-row > span:first-child { flex: 0 0 96px; }
+
+  /* 최종 CTA 폼은 읽기 좋은 폭으로 */
+  .apply-form, .store-badges, .final-cta .btn-block { max-width: 520px; margin-left: auto; margin-right: auto; }
+  .final-cta .btn-block { display: flex; }
+
+  .site-footer { padding-bottom: 96px; }
+}
+
+/* ---------------- 데스크톱 ---------------- */
+@media (min-width: 1024px) {
+  :root {
+    --shell: 1120px;
+    --pad: 40px;
+    --header-h: 64px;
+  }
+
+  .section { padding: 96px 0; }
+  .section-title { font-size: clamp(28px, 1.4vw + 14px, 34px); margin-bottom: 36px; }
+  .section-tag { font-size: 14px; }
+  .lead { font-size: 18px; max-width: 40em; margin-left: auto; margin-right: auto; }
+
+  /* 헤더: 섹션 메뉴 노출 */
+  .nav-menu { display: flex; align-items: center; gap: 22px; margin-right: 10px; }
+  .brand-logo { width: 34px; height: 34px; }
+  .brand-name { font-size: 21px; }
+
+  /* 히어로: 좌 카피 / 우 폰 목업 2단 */
+  .hero {
+    padding-top: 72px;
+    padding-bottom: 88px;
+    text-align: left;
+    background:
+      radial-gradient(60% 90% at 78% 40%, var(--coral-tint) 0%, rgba(255, 240, 240, 0) 70%),
+      var(--bg);
+  }
+  .hero .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    grid-template-areas:
+      "copy  phone"
+      "trust phone";
+    column-gap: 48px;
+    align-items: center;
+  }
+  .hero-copy { grid-area: copy; align-self: end; }
+  .hero .phone-wrap { grid-area: phone; margin: 0; }
+  .hero .trust-line { grid-area: trust; align-self: start; margin-top: 36px; }
+  .hero-title { font-size: clamp(42px, 3.2vw + 10px, 54px); line-height: 1.2; }
+  .hero-sub { margin-left: 0; margin-right: 0; font-size: 18px; max-width: 26em; }
+  .hero .cta-row { justify-content: flex-start; margin-top: 30px; }
+  .hero .cta-row .btn { flex: 0 1 200px; }
+  .hero .store-hint, .hero .partner-line { text-align: left; }
+  .hero .phone-wrap .phone { width: 300px; }
+
+  /* 실제 화면 갤러리: 가로 스크롤 → 4열 그리드 */
+  .showcase-scroll {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 36px 24px;
+    overflow: visible;
+    margin: 36px 0 0;
+    padding: 0;
+    scroll-snap-type: none;
+  }
+  .shot-item { width: auto; }
+  .shot-item .phone { width: 100%; max-width: 220px; }
+  .showcase-hint { display: none; }
+
+  /* S2 · 문제: 통계 + 타임라인 2단, 요인 3열 */
+  #problem .shell {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+  }
+  #problem .section-tag,
+  #problem .section-title,
+  #problem .mini-cards { grid-column: 1 / -1; }
+  #problem .card { margin-bottom: 20px; }
+  .gap-stat .num { font-size: 44px; }
+
+  /* S3 · 인지–접근 간극: 카드는 읽기 폭으로 */
+  #gap .card { max-width: var(--content-narrow); margin-left: auto; margin-right: auto; }
+
+  /* S5 · 3 회복 축 3열 */
+  #axes .shell {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 20px;
+    align-items: stretch;
+  }
+  #axes .section-tag,
+  #axes .section-title { grid-column: 1 / -1; }
+  .axis-card { margin-bottom: 0; display: flex; flex-direction: column; }
+  .axis-card .chips { margin-top: auto; padding-top: 12px; }
+  .axis-card .axis-msg { margin-top: 16px; }
+
+  /* S6 · 작동 방식: 좌 폰 / 우 스텝 */
+  #how .shell {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    grid-template-areas:
+      "tag   tag"
+      "title title"
+      "phone steps"
+      "phone explain";
+    column-gap: 56px;
+    align-items: start;
+  }
+  #how .section-tag { grid-area: tag; }
+  #how .section-title { grid-area: title; }
+  #how .phone-wrap { grid-area: phone; margin: 0; align-self: center; }
+  #how .steps { grid-area: steps; margin-top: 0; }
+  #how .explain { grid-area: explain; margin-top: 12px; }
+  #how .phone-wrap .phone { width: 300px; }
+
+  /* S6.5 · 데모 영상 */
+  #demo .phone-wrap .phone { width: 320px; }
+
+  /* S7 · 안전 우선 설계: 비교표 읽기 폭 */
+  .compare, .banner { max-width: 800px; margin-left: auto; margin-right: auto; }
+  .banner { margin-top: 20px; }
+  .compare-col { padding: 26px 24px; }
+  .compare-col li { font-size: 15px; }
+
+  /* S8 · 근거 */
+  .ev-cards { gap: 20px; }
+  .ev-card { padding: 26px; }
+
+  /* S9 · 지역사회 연계 */
+  .route-cards { gap: 16px; }
+
+  /* S10 · 부가 기능 5열 */
+  .feature-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+
+  /* S11 · 왜 온맘인가 / S12 · 비전: 글 중심 블록은 좁게 */
+  .why-card, #vision .card { max-width: 800px; margin-left: auto; margin-right: auto; }
+  .why-row > span:first-child { flex-basis: 120px; }
+
+  /* S13 · 최종 CTA */
+  .final-cta .shell { max-width: 720px; }
+  .final-title { font-size: 38px; }
+
+  /* 데스크톱에서는 헤더 CTA가 있으므로 하단 고정 버튼 숨김 */
+  .sticky-cta { display: none; }
+  .site-footer { padding-bottom: 48px; }
+  .disclaimer { max-width: 40em; }
+}
+
+/* ---------------- 와이드 데스크톱 ---------------- */
+@media (min-width: 1440px) {
+  :root { --shell: 1200px; }
+  .hero .shell { column-gap: 72px; }
 }

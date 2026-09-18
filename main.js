@@ -80,12 +80,12 @@
       var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
       if (!valid) {
-        setMsg("올바른 이메일 주소를 입력해주세요.", "err");
+        setMsg("올바른 이메일 주소를 입력해주세요", "err");
         form.email.focus();
         return;
       }
       if (!consent) {
-        setMsg("개인정보 수집·이용 동의가 필요합니다.", "err");
+        setMsg("개인정보 수집·이용 동의가 필요합니다", "err");
         return;
       }
 
@@ -104,7 +104,7 @@
           .catch(function () {});
       }
 
-      setMsg("출시 알림 신청이 완료되었어요. 앱이 나오면 가장 먼저 알려드릴게요.", "ok");
+      setMsg("출시 알림 신청이 완료되었어요 · 앱이 나오면 가장 먼저 알려드릴게요", "ok");
       form.reset();
       if (btn) { setTimeout(function () { btn.disabled = false; }, 1500); }
     });
